@@ -6,12 +6,15 @@ ab = search.GPSProblem('A', 'B'
                        , search.romania)
 abAUSTRALIA = search.GPSProblem('WA', 'NT'
                        , search.australia)
+abSPAIN = search.GPSProblem('SUR', 'LAG'
+                       , search.spain)
  
 
 print(search.breadth_first_graph_search(ab).path())
 print(search.depth_first_graph_search(ab).path())
 print(search.branch_and_bound_h_graph_search(ab).path())
 print(search.branch_and_bound_h_graph_search(abAUSTRALIA).path())
+print(search.branch_and_bound_h_graph_search(abSPAIN).path())
 
 
 # Result:
