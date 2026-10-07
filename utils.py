@@ -564,7 +564,8 @@ class BranchAndBoundQueue(Queue):
         return self.A.pop(0)
 
 
-
+class BranchAndBoundQueueH(BranchAndBoundQueue):
+    pass #TODO
 
 
 ## Fig: The idea is we can define things like Fig[3,10] later.
