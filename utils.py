@@ -536,30 +536,32 @@ class FIFOQueue(Queue):
         self.A.extend(items)
 
     def pop(self):
-        return self.pop(0)
+        return self.A.pop(0)
 
 
-
-
-class BranchBound(Queue):
-    """A Branch-and-bound Queue."""
+class BranchAndBoundQueue(Queue):
+    """A Queue where items are always sorted by path_cost (lowest first).
+    Used for Branch and Bound search. Ties keep insertion order."""
 
     def __init__(self):
         self.A = []
-        self.start = 0
+
+    def coste(self, node):
+        return node.path_cost
 
     def append(self, item):
         self.A.append(item)
-
-    def __len__(self):
-        return len(self.A) - self.start
+        self.A.sort(key=self.coste)
 
     def extend(self, items):
         self.A.extend(items)
-        self.A.sort(reverse = True)
+        self.A.sort(key=self.coste)
+
+    def __len__(self):
+        return len(self.A)
 
     def pop(self):
-        return self.pop()
+        return self.A.pop(0)
 
 
 

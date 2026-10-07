@@ -119,6 +119,9 @@ def depth_first_graph_search(problem):
     return graph_search(problem, Stack())
 
 
+def branch_and_bound_graph_search(problem):
+    """Expand the node with the lowest accumulated path cost first."""
+    return graph_search(problem, BranchAndBoundQueue())
 
 # _____________________________________________________________________________
 # The remainder of this file implements examples for the search algorithms.
