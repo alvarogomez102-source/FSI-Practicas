@@ -123,6 +123,10 @@ def branch_and_bound_graph_search(problem):
     """Expand the node with the lowest accumulated path cost first."""
     return graph_search(problem, BranchAndBoundQueue())
 
+
+def branch_and_bound_h_graph_search(problem):
+    """Expand the node with the lowest path cost + heuristic first."""
+    return graph_search(problem, BranchAndBoundHQueue(problem))
 # _____________________________________________________________________________
 # The remainder of this file implements examples for the search algorithms.
 

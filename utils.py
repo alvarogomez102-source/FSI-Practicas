@@ -1,4 +1,4 @@
-
+import math
 #______________________________________________________________________________
 # Simple Data Structures: infinity, Dict, Struct
 
@@ -564,6 +564,30 @@ class BranchAndBoundQueue(Queue):
         return self.A.pop(0)
 
 
+class BranchAndBoundHQueue(Queue):
+    """A Queue where items are always sorted by path_cost + h (lowest first).
+    Used for Branch and Bound with underestimation. Ties keep insertion order."""
+
+    def __init__(self, problem):
+        self.A = []
+        self.problem = problem
+
+    def coste(self, node):
+        return node.path_cost + self.problem.h(node)
+
+    def append(self, item):
+        self.A.append(item)
+        self.A.sort(key=self.coste)
+
+    def extend(self, items):
+        self.A.extend(items)
+        self.A.sort(key=self.coste)
+
+    def __len__(self):
+        return len(self.A)
+
+    def pop(self):
+        return self.A.pop(0)
 
 
 
